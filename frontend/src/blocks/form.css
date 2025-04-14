@@ -1,0 +1,301 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.closed-window {
+  display: none;
+}
+
+.form__error {
+  color: red;
+  font-size: 10px;
+}
+
+.popup__button_disabled {
+  cursor: not-allowed;
+}
+
+.form__popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  height: 313px;
+}
+
+.confirmation__popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  height: 181px;
+}
+
+.confirmation__close {
+  max-width: 40px;
+  height: 40px;
+  position: relative;
+  left: 250px;
+  bottom: 100px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.confirmation__button {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  max-width: 358px;
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  background-color: #000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  /* margin-top: 10px; */
+}
+
+.edit__popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 430px;
+  height: 272px;
+}
+
+.form__title {
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000;
+  width: 330px;
+  margin-top: 34px;
+}
+
+.form__name {
+  max-width: 358px;
+  width: 100%;
+  height: 20px;
+  border: none;
+  outline: none;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.form__about {
+  max-width: 358px;
+  width: 100%;
+  height: 20px;
+  border: none;
+  outline: none;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.form__line {
+  max-width: 358px;
+  width: 100%;
+}
+
+.form__button {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  max-width: 358px;
+  height: 50px;
+  width: 100%;
+  color: #fff;
+  background-color: #000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  margin-top: 30px;
+}
+
+.form__photo {
+  max-width: 358px;
+  width: 100%;
+  height: 20px;
+  border: none;
+  outline: none;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.form__button:hover {
+  opacity: 0.7;
+}
+
+.form__close {
+  max-width: 40px;
+  height: 40px;
+  position: relative;
+  left: 250px;
+  bottom: 100px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  background-color: #000;
+}
+
+.form__close:hover {
+  opacity: 0.7;
+}
+
+.popup__opened {
+  display: flex;
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  border-radius: 10px;
+}
+
+.popup-closed {
+  display: none;
+}
+
+.popup__title {
+  color: #fff;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  width: 500px;
+  font-family: Inter;
+  font-size: 10px;
+  font-weight: 90;
+  line-height: 29px;
+  letter-spacing: 0em;
+}
+
+.popup__close {
+  max-width: 30px;
+  width: 100%;
+  height: 30px;
+  position: relative;
+  left: 260px;
+  bottom: 2px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.popup__close:hover {
+  opacity: 0.7;
+}
+
+.popup__picture {
+  max-width: 500px;
+  height: 700px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay__visible {
+  display: block;
+}
+
+@media screen and (max-width: 542px) {
+  .form__popup {
+    width: 288px;
+    height: 270px;
+  }
+
+  .form__title {
+    font-size: 20px;
+    width: 200px;
+  }
+
+  .form__name {
+    width: 240px;
+  }
+
+  .form__about {
+    width: 240px;
+  }
+
+  .form__button {
+    width: 240px;
+    font-size: 15px;
+  }
+
+  .form__line {
+    width: 240px;
+  }
+
+  .form__close {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    left: 130px;
+    bottom: 100px;
+  }
+
+  .popup__picture {
+    max-width: 270px;
+    height: 350px;
+  }
+
+  .popup__close {
+    max-width: 20px;
+    width: 100%;
+    height: 20px;
+    position: relative;
+    left: 150px;
+    bottom: 2px;
+  }
+
+  .popup__title {
+    width: 270px;
+  }
+}

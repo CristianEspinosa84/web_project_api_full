@@ -1,0 +1,50 @@
+.header {
+  max-width: 880px;
+  width: 100%;
+  margin: auto;
+}
+
+.header__auth {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 880px;
+  border-bottom: 0.5px solid #fff;
+  padding: 0 0 30px;
+}
+
+.header__logo {
+  padding-top: 35px;
+}
+
+.header__title {
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.header__title a {
+  color: white;
+  text-decoration: none;
+}
+
+.header__line {
+  margin-top: 50px;
+  border: none;
+  border-top: 0.5px solid #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .header__logo {
+    padding-top: 70px;
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 542px) {
+  .header__logo {
+    padding-top: 40px;
+    padding-left: 20px;
+  }
+}

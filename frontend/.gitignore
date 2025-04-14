@@ -1,0 +1,12 @@
+# No subir dependencias ni binarios
+node_modules/
+
+# No subir carpetas generadas automáticamente
+dist/
+
+# No subir configuración privada
+.env
+
+# Archivos temporales y de sistema
+*.log
+.DS_Store
