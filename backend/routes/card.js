@@ -1,4 +1,5 @@
 const express = require("express");
+const { celebrate, Joi } = require("celebrate");
 const {
   getCards,
   createCard,
@@ -9,10 +10,26 @@ const {
 
 const router = express.Router();
 
+// 🟢 Obtener todas las tarjetas
 router.get("/", getCards);
-router.post("/", createCard);
+
+// ✅ Validación para crear tarjeta
+router.post(
+  "/",
+  celebrate({
+    body: Joi.object().keys({
+      name: Joi.string().required().min(2).max(30),
+      link: Joi.string().required().uri(),
+    }),
+  }),
+  createCard
+);
+
+// 🟢 Eliminar tarjeta
 router.delete("/:cardId", deleteCard);
-router.put("/:cardId/likes", likeCard); // 📌 Dar like
-router.delete("/:cardId/likes", dislikeCard); // 📌 Quitar like
+
+// 🟢 Dar y quitar like
+router.put("/:cardId/likes", likeCard);
+router.delete("/:cardId/likes", dislikeCard);
 
 module.exports = router;

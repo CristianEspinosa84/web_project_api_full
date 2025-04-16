@@ -12,17 +12,28 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
+
+
+  // ✅ NUEVO MÉTODO que devuelve headers con JWT
+  _getHeaders() {
+    const token = localStorage.getItem("jwt");
+    return {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
+  }
+
   // Obtener información del usuario
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
   // Obtener las tarjetas iniciales
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then((res) => {
       if (res.ok) {
         return res.json();
@@ -35,16 +46,17 @@ class Api {
   updateUserProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({ name, about }),
     }).then(this._checkResponse);
   }
 
   // Añadir una nueva tarjeta
   addNewCard(name, link) {
+console.log(this._getHeaders());
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({ name, link }),
     }).then(this._checkResponse);
   }
@@ -53,7 +65,7 @@ class Api {
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "PUT",
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
@@ -61,7 +73,7 @@ class Api {
   dislikeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
@@ -69,7 +81,7 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: this._getHeaders(),
     }).then(this._checkResponse);
   }
 
@@ -77,7 +89,7 @@ class Api {
   updateUserAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: this._getHeaders(),
       body: JSON.stringify({
         avatar: avatar,
       }),
@@ -91,10 +103,6 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/web-es-cohort-17",
-  headers: {
-    authorization: "59345b04-1bcb-477b-9fd0-29c1af9b7647",
-    "Content-Type": "application/json",
-  },
+  baseUrl: "https://api.ericespinosa17.chickenkiller.com"
 });
 export default api;

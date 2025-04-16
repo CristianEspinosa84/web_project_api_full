@@ -56,21 +56,25 @@ function App() {
       });
   }
 
-  function handleLogin(email, password) {
-    auth
-      .authorize(email, password)
-      .then((data) => {
-        localStorage.setItem("jwt", data.token);
+function handleLogin(email, password) {
+  auth
+    .authorize(email, password)
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token); // ✅ solo si existe
         setLoggedIn(true);
         setEmail(email);
         navigate("/");
-      })
-      .catch((err) => {
-        console.log("Error al iniciar sesión:", err);
-        setIsSuccess(false);
-        setIsTooltipOpen(true);
-      });
-  }
+      } else {
+        throw new Error("No se recibió el token");
+      }
+    })
+    .catch((err) => {
+      console.log("Error al iniciar sesión:", err);
+      setIsSuccess(false);
+      setIsTooltipOpen(true);
+    });
+}
 
   function handleLogout() {
     localStorage.removeItem("jwt");

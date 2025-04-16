@@ -1,18 +1,30 @@
+require("dotenv").config();
+console.log("JWT cargado:", process.env.JWT_SECRET);
+
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
 
-const { createUser, login } = require("./controllers/users");
-const userRoutes = require("./routes/users");
-const cardRoutes = require("./routes/cards");
+
+const { createUser, login } = require("./controllers/user");
+const userRoutes = require("./routes/user");
+const cardRoutes = require("./routes/card");
 const auth = require("./middlewares/auth");
 const { celebrate, Joi, errors } = require("celebrate");
 const validator = require("validator");
 const expressWinston = require("express-winston");
 const winston = require("winston");
 const path = require("path");
+const cors = require('cors');
 
 const app = express();
+
+// ✅ Habilitar CORN
+app.use(cors({
+  origin: 'https://ericespinosa17.chickenkiller.com',
+  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 const PORT = 3000;
 
 // Middleware para recibir JSON

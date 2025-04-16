@@ -12,17 +12,13 @@ const auth = (req, res, next) => {
 
   let payload;
 
-  try {
-    payload = jwt.verify(
-      token,
-      process.env.JWT_SECRET || "clave-super-secreta"
-    );
+ try {
+    payload = jwt.verify(token, process.env.JWT_SECRET);
   } catch (err) {
     return res.status(401).json({ message: "Token inválido" });
   }
 
-  req.user = payload; // Guardamos el _id dentro del request
-  next(); // Permitimos el acceso
+  req.user = payload;
+  next();
 };
-
 module.exports = auth;
