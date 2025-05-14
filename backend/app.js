@@ -19,11 +19,25 @@ const cors = require('cors');
 const app = express();
 
 // ✅ Habilitar CORN
-app.use(cors({
-  origin: 'https://ericespinosa17.chickenkiller.com',
-  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+const allowedOrigins = [
+  "https://ericespinosa17.chickenkiller.com",
+  "http://localhost:8080"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      console.log("🔄 Origin recibido:", origin); // opcional para debug
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("CORS not allowed"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 const PORT = 3000;
 
