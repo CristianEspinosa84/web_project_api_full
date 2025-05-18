@@ -1,19 +1,23 @@
 import React from "react";
-import avatarImg from "../Images/JacquesCousteau.jpg";
+import defaultAvatar from "../Images/JacquesCousteau.jpg";
 import editIcon from "../Images/EditButton.jpg";
 
 function Profile({
   name = "Jacques Cousteau",
   about = "Explorer",
+  avatar,
   onEditProfile,
   onAddPlace,
   onEditAvatar,
 }) {
+
+  const avatarToShow = avatar?.trim() ? avatar : defaultAvatar;
+
   return (
     <section className="profile">
       <div className="profile__avatar-container" onClick={onEditAvatar}>
         <img
-          src={avatarImg}
+          src={avatarToShow}
           alt="Avatar del perfil"
           className="profile__image"
         />

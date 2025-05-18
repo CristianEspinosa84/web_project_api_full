@@ -31,7 +31,7 @@ function App() {
         .checkToken(token)
         .then((res) => {
           setLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(res.email);
           navigate("/");
         })
         .catch((err) => {

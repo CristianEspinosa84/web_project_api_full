@@ -4,6 +4,7 @@
   "description": "Abre los archivos en tu editor de código y visualízalos en tu navegador para ver el proyecto.",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve --mode development --open --hot",  
     "build": "webpack",
     "dev": "webpack serve",
     "gh-pages": "^6.2.0",

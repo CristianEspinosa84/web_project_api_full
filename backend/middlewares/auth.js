@@ -14,6 +14,7 @@ const auth = (req, res, next) => {
 
  try {
     payload = jwt.verify(token, process.env.JWT_SECRET);
+      console.log("📌 Payload decodificado:", payload);
   } catch (err) {
     return res.status(401).json({ message: "Token inválido" });
   }

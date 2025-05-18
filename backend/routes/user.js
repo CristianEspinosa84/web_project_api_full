@@ -12,7 +12,8 @@ const router = express.Router();
 // 🟢 Obtener todos los usuarios
 router.get("/", getUsers);
 
-// 🟢 Obtener usuario por ID
+
+// 🟢Obtener usuario por ID
 router.get("/:id", getUserById);
 
 // ✅ Validación para actualizar perfil

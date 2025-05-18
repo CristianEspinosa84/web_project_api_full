@@ -8,7 +8,12 @@ function Card({
   currentUserId,
 }) {
   const isOwn = card.owner._id === currentUserId;
-  const isLiked = card.likes.some((like) => like._id === currentUserId);
+  const isLiked = card.likes.includes(currentUserId);
+
+   console.log("Card ID:", card._id);
+  console.log("Likes:", card.likes);
+  console.log("currentUserId:", currentUserId);
+  console.log("isLiked:", isLiked);
 
   function handleLike() {
     onLikeClick(card);
@@ -20,7 +25,8 @@ function Card({
 
   function handleClick() {
     onCardClick(card);
-  }
+}
+ 
 
   return (
     <div className="element">

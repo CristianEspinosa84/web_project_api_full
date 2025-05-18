@@ -63,7 +63,7 @@ console.log(this._getHeaders());
 
   // Dar "me gusta" a una tarjeta
   likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._getHeaders(),
     }).then(this._checkResponse);
@@ -71,7 +71,7 @@ console.log(this._getHeaders());
 
   // Quitar "me gusta" de una tarjeta
   dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._getHeaders(),
     }).then(this._checkResponse);

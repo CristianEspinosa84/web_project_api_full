@@ -15,7 +15,7 @@ module.exports = {
   },
   target: ["web", "es5"],
   stats: { children: true },
-  mode: "development",
+  mode: process.env.NODE_ENV || "development",
   devServer: {
     historyApiFallback: true,
     static: {

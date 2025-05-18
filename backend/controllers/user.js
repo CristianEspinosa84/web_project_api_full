@@ -13,7 +13,7 @@ const getUsers = (req, res) => {
 
 // 📌 Obtener un usuario por ID con orFail()
 const getUserById = (req, res) => {
-  User.findById(req.params.id)
+  User.findById(req.user._id)
     .orFail(() => {
       const error = new Error("Usuario no encontrado");
       error.statusCode = 404;
@@ -104,6 +104,10 @@ const login = (req, res, next) => {
     })
     .catch(next);
 };
+
+
+
+
 
 // 📌 Actualizar perfil (name y about)
 const updateUserProfile = (req, res) => {

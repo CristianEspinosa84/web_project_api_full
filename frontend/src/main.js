@@ -84,7 +84,8 @@ function Main() {
   }
 
   function handleLikeClick(card) {
-    const isLiked = card.likes.some((like) => like._id === currentUser._id);
+    const isLiked = card.likes.some((like) =>
+  typeof like === "string" ? like === currentUser._id : like._id === currentUser._id);
 
     const likeAction = isLiked
       ? api.dislikeCard(card._id)
@@ -113,6 +114,7 @@ function Main() {
       <Profile
         name={currentUser.name}
         about={currentUser.about}
+        avatar={currentUser.avatar} 
         onEditProfile={handleEditProfileClick}
         onAddPlace={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}

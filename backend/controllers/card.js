@@ -3,6 +3,7 @@ const Card = require("../models/card");
 // 📌 Obtener todas las tarjetas
 const getCards = (req, res) => {
   Card.find({})
+    .populate("owner")
     .then((cards) => res.status(200).json(cards))
     .catch(() =>
       res.status(500).json({ message: "Error interno del servidor" })
@@ -15,7 +16,8 @@ const createCard = (req, res) => {
   const owner = req.user._id; // Middleware asigna el usuario automáticamente
 
   Card.create({ name, link, owner })
-    .then((card) => res.status(201).json(card))
+    .then((card) => card.populate("owner")) // 🔥 esta línea es clave
+    .then((populatedCard) => res.status(201).json(populatedCard))
     .catch((err) => {
       if (err.name === "ValidationError") {
         return res
